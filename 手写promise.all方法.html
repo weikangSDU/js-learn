@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        let p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('1111')
+            }, 1000)
+        })
+        let p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('5555')
+            }, 5000)
+        })
+        let p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('2222')
+            }, 2000)
+        })
+        // Promise.all([p1, p2, p3]).then(res => {
+        //     console.log(res)
+        // })
+        myPromiseAll([p1, p2, p3]).then(res => {
+            console.log(res)
+        })
+
+        function myPromiseAll(lists) {
+            return new Promise((resolve, reject) => {
+                let results = []
+                let num = 0
+                lists.map((element, index) => {
+                    element.then(result => {
+                        results[index] = result
+                        num++
+                        if (num === lists.length) {
+                            resolve(results)
+                        }
+                    }, error => {
+                        myPromiseAll(lists)
+                    })
+                })
+            })
+        }
+    </script>
+</body>
+</html>

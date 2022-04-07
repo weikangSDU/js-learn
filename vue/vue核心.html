@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue核心</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./render.js"></script>
+  <script>
+    // 1.通过h函数创建一个vnode
+    let test = 100
+    const vnode = h('div', {class: 'why'}, [
+      h('span', null, `我是个span标签,当前值为${test}`),
+      h('button', {onClick: () => {
+        console.log('1234')
+        test++
+        console.log(test)
+        // 可以看出test的值已经改变但是因为没有响应式，所以span标签上的值并没有更新
+      }}, '+1')
+    ])
+    console.log(vnode)
+    mount(vnode, document.querySelector('#app'))
+  </script>
+</body>
+</html>
