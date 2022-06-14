@@ -1,0 +1,22 @@
+flex布局又叫弹性盒模型
+采用flex布局的元素叫做flex容器，简称容器。他的子元素自动成为该容器
+的成员，称flex项目，简称项目
+flex容器支持6个属性配置
+1.flex-direction 属性决定主轴的方向
+  有4个值 row row-reverse column column-reverse
+  row 默认 水平 从左往右
+  row-reverse 水平 从右往左
+  column 垂直 从上往下
+  column-reverse 垂直 从上往下
+2.flex-wrap 定义如果一行排不下，如何换行
+  nowrap: 默认 不换行
+  wrap: 换行，第一行在上方
+  wrap-reverse: 换行，第一行在下方
+3.flex-flow 属性是flex-direction 和 flex-wrap 属性的简写形式。
+  默认值为 row nowrap
+4.justify-content 定义了项目在主轴上的对齐方式
+  flex-start flex-end center space-between space-around
+5.align-items 定义项目在交叉轴上如何对齐
+  flex-start flex-end center baseline stretch(默认值)
+6.align-content 定义了多根轴线的对其方式。如果项目只有一根轴线，该项目不起作用
+  flex-start flex-end center space-between space-around stretch
