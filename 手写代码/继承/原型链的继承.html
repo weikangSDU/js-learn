@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型链继承</title>
+</head>
+<body>
+  <script>
+    /**
+     * 原型链继承的问题
+     * 1. 引用类型的属性被所有实例共享 例如names
+     * 2. 创建Child实例时，不能向Parent传参
+     * 仔细看 Child.prototype.constructor 指向了Parent
+     * 
+     **/
+    function Parent() {
+      this.names = ['weikang1', 'weikang2']
+      this.age = 50
+    }
+
+    Parent.prototype.getName = function() {
+      console.log(this.names)
+    }
+
+    function Child() {
+
+    }
+
+    Child.prototype = new Parent()
+
+    const child1 = new Child()
+    child1.getName()
+
+    console.log(child1.names)
+    child1.names.push('weikang3')
+    console.log(child1)
+    const child2 = new Child()
+    console.log(child2)
+    
+  </script>
+</body>
+</html>

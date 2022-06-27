@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>借用构造函数</title>
+</head>
+<body>
+  <script>
+    /**
+     * 优点
+     * 1. 避免了引用类型的属性被所有实例共享
+     * 2. 可以在child中向Parent传参
+     * 缺点
+     * 1. 方法都在构造函数中定义，每次创建实例都会创建一遍方法。
+     * */
+    function Parent() {
+      this.names = ['weikang1', 'weikang2']
+      this.getAge = function() {
+        console.log(this.names)
+      }
+    }
+    Parent.prototype.getName = function() {
+      console.log(this.names)
+    }
+    function Child() {
+      Parent.call(this)
+    }
+
+    var child1 = new Child()
+    child1.names.push('weikang3')
+
+    var child2 = new Child()
+    console.log(child2) // undefined
+
+
+  </script>
+</body>
+</html>
