@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyApply</title>
+</head>
+<body>
+  <script>
+    Function.prototype.apply2 = function(obj) {
+      if (!obj) obj = window
+      let args = []
+      let result
+      for (let i = 1; i < arguments.length; i++) {
+        args.push(arguments[i])
+      }
+      obj.fn = this
+      if (args.length) {
+        result = obj.fn(args)
+      } else {
+        result = obj.fn()
+      }
+      delete obj.fn
+      return result
+    }
+  </script>
+</body>
+</html>
