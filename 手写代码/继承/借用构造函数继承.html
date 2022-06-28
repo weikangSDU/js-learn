@@ -27,13 +27,12 @@
     function Child() {
       Parent.call(this)
     }
-
+    console.log(Child.getName, 'getName')
     var child1 = new Child()
     child1.names.push('weikang3')
 
     var child2 = new Child()
-    console.log(child2) // undefined
-
+    console.log(child2) // child2.getName undefined
 
   </script>
 </body>

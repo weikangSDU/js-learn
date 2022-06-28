@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寄生式继承</title>
+</head>
+<body>
+  <script>
+    // 创建一个仅用于封装继承过程的函数,该函数在内部以某种方式来做增强对象，最后返回对象
+    // 缺点：跟借用构造函数继承一样，每次创建对象都会创建一遍方法
+    function createObj(o) {
+      const obj = Object.create(o)
+      obj.sayName = function() {
+        console.log('hi')
+      }
+      return obj
+    }
+  </script>
+</body>
+</html>
